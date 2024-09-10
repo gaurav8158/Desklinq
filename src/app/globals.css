@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.animated-text {
+  position: relative;
+  color: black;
+  border-right: 2px solid transparent;
+  width: 40%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typing 7s steps(50),
+    cursor 0.4s step-end infinite alternate;
+}
+
+/* .animated-text::before{
+  position: absolute;
+  content: attr(data-text);
+  top:0;
+  left:0;
+  width: 0;
+  height: 100%;
+  color: black;
+  overflow: hidden;
+  animation: animate 8s linear infinite;
+}
+ */
+
+.tour-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(10px) !important; /* Apply background blur */
+  -webkit-backdrop-filter: blur(
+    10px
+  ) !important; /* Apply background blur for Safari */
+}
+
+@keyframes cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}

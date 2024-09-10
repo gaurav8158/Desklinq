@@ -1,0 +1,18 @@
+name: CD Pipeline
+
+on :
+  workflow_run :
+    workflows : [ "CI Pipeline" ]
+    types : ["completed"] 
+
+jobs :
+
+  build :
+    runs-on: Self-hosted
+    steps:
+      - name: Pull Docker image from registry
+        run: sudo docker pull desklinq/desklinq-frontend:latest
+      - name: delete existing container
+        run: sudo docker rm -f desklinq-frontend-container || true
+      - name: Run Docker container from image
+        run: sudo docker run -d -p 3000:3000 --name desklinq-frontend-container desklinq/desklinq-frontend

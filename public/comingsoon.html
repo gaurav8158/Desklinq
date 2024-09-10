@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeskLinq – Coming Soon</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(to bottom, #ffffff 30%, #7b65656d 60%);
+        color: #333;
+        overflow: hidden;
+      }
+
+      .header {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: transparent;
+        z-index: 2;
+      }
+
+      .logo {
+        width: 180px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        margin-bottom: 20px;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .social-media {
+        display: flex;
+        gap: 10px;
+      }
+
+      .social-media a {
+        color: #333;
+        font-size: 1.2rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+      }
+
+      .social-media a:hover {
+        color: #5910e9;
+        background-color: #d1c4e9;
+      }
+
+      .login-button {
+        margin-left: 20px;
+        text-decoration: none;
+        background-color: #5910e9;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .login-button:hover {
+        background-color: #3c07a4;
+      }
+
+      .content-wrapper {
+        margin-top: 100px;
+        margin-bottom: 10px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        padding-left: 10%;
+        z-index: 2;
+        max-width: 80%;
+      }
+
+      .content-wrapper h1 {
+        font-size: 2rem;
+        margin: 0;
+        color: #333;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+
+      .content-wrapper h2 {
+        font-size: 1rem;
+        color: #555;
+        margin-top: 8px;
+        font-weight: 300;
+        max-width: 70%;
+        line-height: 1.4;
+      }
+
+      .launching-soon {
+        font-size: 2.5rem;
+        color: #5910e9;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        animation: pulse 1.5s infinite;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .footer-wrapper {
+        height: 70%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .footer-wrapper div {
+        width: 23%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .box-1 {
+        background-image: url('images/pic.jpg');
+      }
+
+      .box-2 {
+        background-image: url('images/pic2.jpg');
+      }
+
+      .box-3 {
+        background-image: url('images/pic3.jpg');
+      }
+
+      .box-4 {
+        background-image: url('images/pic4.jpg');
+      }
+
+      .query-response-wrapper {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        max-width: 800px;
+        max-height: 56vh;
+        background-color: rgba(0, 0, 0, 0.786);
+        padding: 20px;
+        border-radius: 10px 20px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        opacity: 1;
+        overflow: hidden;
+      }
+
+      .query-box,
+      .response-box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        position: relative;
+        width: fit-content;
+        max-width: 90%;
+      }
+
+      .query-box {
+        justify-content: flex-end;
+        background-color: #5910e9;
+        color: #fff;
+        margin-left: auto;
+      }
+
+      .response-box {
+        justify-content: flex-start;
+        background-color: #fff;
+        color: #5910e9;
+        margin-right: auto;
+      }
+
+      .query-box .circle,
+      .response-box .circle {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #fff;
+        background-image: url('images/logo123.png');
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+      }
+
+      .query-circle {
+        right: -10px;
+        top: 10px;
+      }
+
+      .response-circle {
+        left: -10px;
+        top: 10px;
+      }
+
+      .query-text,
+      .response-text {
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 0;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+
+      .query-text {
+        color: #fff;
+        margin-left: 40px;
+      }
+
+      .response-text {
+        color: #5910e9;
+        margin-right: 40px;
+      }
+
+      .typing-animation {
+        border-right: 2px solid #333;
+        animation: blink 0.75s step-end infinite;
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+
+        50% {
+          border-color: #333;
+        }
+      }
+
+      .response-text ul {
+        list-style-type: none;
+        margin-left: 20px;
+        line-height: 1.6;
+        padding: 0;
+        margin: 0;
+      }
+
+      .response-text ul li::before {
+        content: '⦿';
+        margin-right: 8px;
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          width: 100%;
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: none;
+          background-color: transparent;
+        }
+
+        .logo {
+          width: 150px;
+          margin-bottom: 10px;
+        }
+
+        .header-right {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+          margin-bottom: 10px;
+        }
+
+        .social-media {
+          gap: 5px;
+        }
+
+        .social-media a {
+          width: 35px;
+          height: 35px;
+          font-size: 1rem;
+        }
+
+        .login-button {
+          font-size: 0.9rem;
+          padding: 8px 12px;
+        }
+
+        .content-wrapper {
+          width: 100%;
+          padding: 0 5%;
+          text-align: center;
+          box-sizing: border-box;
+          margin-top: 10px;
+          max-width: 100%;
+        }
+
+        .content-wrapper h1 {
+          font-size: 1.6rem;
+          margin: 0;
+          line-height: 1.2;
+          padding: 0 10px;
+        }
+
+        .content-wrapper h2 {
+          font-size: 1rem;
+          margin-top: 5px;
+          line-height: 1.4;
+          padding: 0 10px;
+        }
+
+        .launching-soon {
+          font-size: 1.8rem;
+          margin-top: 10px;
+          padding: 0 10px;
+        }
+
+        .footer-wrapper {
+          flex-direction: column;
+          width: 100%;
+          height: auto;
+          margin-top: 20px;
+        }
+
+        .footer-wrapper div {
+          width: 100%;
+          height: 120px;
+          margin-bottom: 10px;
+        }
+
+        .query-response-wrapper {
+          width: 100%;
+          max-width: none;
+          bottom: 60px;
+          padding: 15px;
+          box-sizing: border-box;
+        }
+
+        .query-box,
+        .response-box {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .query-text,
+        .response-text {
+          font-size: 0.9rem;
+          padding: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          width: 120px;
+        }
+
+        .content-wrapper {
+          padding: 0 5%;
+        }
+
+        .content-wrapper h1 {
+          font-size: 1.4rem;
+        }
+
+        .content-wrapper h2 {
+          font-size: 0.8rem;
+        }
+
+        .launching-soon {
+          font-size: 1.6rem;
+        }
+
+        .footer-wrapper div {
+          height: 100px;
+        }
+
+        .query-text,
+        .response-text {
+          font-size: 0.8rem;
+          padding: 6px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <img src="images/logo.png" alt="DeskLinq Logo" class="logo" />
+      <div class="header-right">
+        <div class="social-media">
+          <a
+            href="https://www.facebook.com/people/Desklinq-Workspace-On-demand/100075596391931/"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://www.instagram.com/desklinq"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.linkedin.com/company/desklinq/?viewAsMember=true"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
+        <a
+          href="https://desklinq.com/auth/login?callbackUrl=/dashboard/home"
+          class="login-button"
+          >Login</a
+        >
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <h1>
+        Talk to Your Workspace – Booking a Workspace Has Never Been This Easy!
+      </h1>
+      <h2>
+        Experience DeskLinq’s Revolutionary Platform: Just Type What You Need,
+        and We’ll Handle the Rest.
+      </h2>
+    </div>
+
+    <div class="launching-soon">Going Live Soon</div>
+
+    <div class="footer-wrapper">
+      <div class="box-1"></div>
+      <div class="box-2"></div>
+      <div class="box-3"></div>
+      <div class="box-4"></div>
+    </div>
+
+    <div class="query-response-wrapper" id="queryResponseWrapper"></div>
+    <script>
+      const conversations = [
+        {
+          query: 'What are the amenities included in the meeting room?',
+          response: `
+    The meeting room includes the following amenities:
+        ⦿ High-speed Wi-Fi
+        ⦿ Projector and screen
+        ⦿ Whiteboard and markers
+        ⦿ Teleconferencing equipment
+        ⦿ Refreshments (coffee, tea, water)`,
+        },
+        {
+          query:
+            'Can you provide details about the quiet desks available near the city center?',
+          response: `
+    The quiet desks near the city center include:
+        ⦿ High-speed Wi-Fi
+        ⦿ Ergonomic chair
+        ⦿ Power outlets
+        ⦿ Soundproofing
+        ⦿ Access to communal kitchen and refreshments`,
+        },
+        {
+          query: 'Do you have any conference rooms available for next Friday?',
+          response:
+            'Conference rooms are available for next Friday. Please specify the location and capacity you need.',
+        },
+        {
+          query:
+            'I need a workspace with a large monitor and fast internet in the downtown area.',
+          response:
+            'Workspaces with large monitors and fast internet are available in the downtown area. Check our platform for specific locations and availability.',
+        },
+        {
+          query: 'What is included in your collaborative workspaces?',
+          response: `
+    Our collaborative workspaces feature:
+        ⦿ Open plan layout
+        ⦿ Whiteboard walls
+        ⦿ Projector and screen
+        ⦿ High-speed Wi-Fi
+        ⦿ Comfortable seating arrangements`,
+        },
+      ]
+
+      const queryResponseWrapper = document.getElementById(
+        'queryResponseWrapper'
+      )
+      let currentIndex = 0
+
+      function showChat() {
+        if (currentIndex >= conversations.length) {
+          return
+        }
+
+        const { query, response } = conversations[currentIndex]
+
+        const queryBox = document.createElement('div')
+        queryBox.classList.add('query-box')
+        queryBox.innerHTML = `
+                <div class="circle query-circle"></div>
+                <div class="query-text typing-animation"></div>
+            `
+
+        const responseBox = document.createElement('div')
+        responseBox.classList.add('response-box')
+        responseBox.style.display = 'none'
+        responseBox.innerHTML = `
+                <div class="circle response-circle"></div>
+                <div class="response-text"></div>
+            `
+
+        queryResponseWrapper.appendChild(queryBox)
+        queryResponseWrapper.appendChild(responseBox)
+
+        simulateTyping(queryBox.querySelector('.query-text'), query, () => {
+          responseBox.style.display = 'flex'
+          scrollToBottom(queryResponseWrapper)
+
+          simulateTyping(
+            responseBox.querySelector('.response-text'),
+            response,
+            () => {
+              currentIndex++
+              setTimeout(() => {
+                const boxes = queryResponseWrapper.children
+                if (boxes.length > 6) {
+                  for (let i = 0; i < 2; i++) {
+                    boxes[i].style.opacity = '0'
+                    boxes[i].style.transform = 'translateY(-50px)'
+                    setTimeout(() => {
+                      queryResponseWrapper.removeChild(boxes[i])
+                    }, 1000)
+                  }
+                }
+                scrollToBottom(queryResponseWrapper)
+                showChat()
+              }, 2000)
+            }
+          )
+        })
+      }
+
+      function simulateTyping(element, text, callback) {
+        let i = 0
+        function type() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i)
+            i++
+            requestAnimationFrame(() => {
+              scrollToBottom(queryResponseWrapper)
+            })
+            setTimeout(type, 25)
+          } else if (callback) {
+            element.classList.remove('typing-animation')
+            callback()
+          }
+        }
+        type()
+      }
+
+      function scrollToBottom(element) {
+        element.scrollTop = element.scrollHeight
+      }
+
+      window.onload = showChat
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+# Next.js
+.next
+
+# Compiled output
+out
+
+# Dependency directories
+node_modules
+
+# Environment variables
+
+# Build directory
+build
+
+# Cache directory
+.cache
+
+# Log files
+*.log
+
+# Editor directories and files
+.vscode/
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini

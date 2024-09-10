@@ -1,0 +1,74 @@
+[
+  {
+    "status": "ENABLED",
+    "name": "ABC apartment",
+    "address": {
+      "country": "United States",
+      "area": "New York",
+      "landmark": "Central Park",
+      "houseNumber": "123",
+      "pin": 12345,
+      "city": "New York City",
+      "state": "New York",
+      "location": {
+        "type": "Point",
+        "coordinates": [40.7128, -74.0061],
+        "_id": "6486bd8cd9a438790320e55d"
+      },
+      "description": "A charming cottage nestled in a peaceful neighborhood."
+    },
+    "description": "A charming cottage nestled in a peaceful neighborhood.",
+    "amenities": [
+      {
+        "_id": "6488060c541c9e9d63ccd558",
+        "Name": "Building Amenities",
+        "Image": "https://example.com/pool.jpg",
+        "info": "Emergency stair case.",
+        "category": "SAFETY",
+        "__v": 0
+      }
+    ],
+    "rating": 4.2,
+    "images": [
+      {
+        "uri": "https://example.com/images/image1.jpg",
+        "order": 1,
+        "description": "A beautiful landscape",
+        "_id": "6486bd8cd9a438790320e55e"
+      },
+      {
+        "uri": "https://example.com/images/image1.jpg",
+        "order": 2,
+        "description": "A beautiful landscape",
+        "_id": "6486bd8cd9a438790320e55f"
+      }
+    ],
+    "offerings": [
+      {
+        "type": "MEETING_ROOMS",
+        "name": "Conference Room",
+        "capacity": 5,
+        "amenities": [
+          {
+            "_id": "648801c6e57a2983b5a3af07",
+            "Name": "Swimming Pool",
+            "Image": "https://example.com/pool.jpg",
+            "info": "A large swimming pool for guests to enjoy.",
+            "category": "SAFETY",
+            "__v": 0
+          }
+        ],
+        "pricing": {
+          "context": "DURATION",
+          "duration": "HOURLY",
+          "area": "SQ_FT",
+          "currency": "USD",
+          "price": 50,
+          "info": "Additional charges apply for AV equipment."
+        },
+        "id": "6486bd66d9a438790320e559"
+      }
+    ],
+    "id": "6486bd8cd9a438790320e55c"
+  }
+]
